@@ -7,6 +7,10 @@ import staff.MusicAuthor;
 public class Ballet extends MusicalShow {
     private Choreographer choreographer;
 
+    public Choreographer getChoreographer() {
+        return choreographer;
+    }
+
     public Ballet(Director director, MusicAuthor musicAuthor, String librettoText, Choreographer choreographer) {
         super(director, musicAuthor, librettoText);
         this.choreographer = choreographer;

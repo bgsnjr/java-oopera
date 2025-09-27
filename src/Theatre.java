@@ -46,5 +46,6 @@ public class Theatre {
         opera.printLibrettoText();
         System.out.println("Текст либретто для балета:");
         ballet.printLibrettoText();
+
     }
 }

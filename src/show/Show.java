@@ -6,8 +6,8 @@ import staff.Director;
 import java.util.ArrayList;
 
 public class Show {
-    private ArrayList<Actor> actors = new ArrayList<>();
-    private Director director;
+    protected ArrayList<Actor> actors = new ArrayList<>();
+    protected Director director;
 
     public Show(Director director) {
         this.director = director;
@@ -26,15 +26,20 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String replacedActorSurname) {
-        boolean found = false;
+        ArrayList<Actor> foundActors = new ArrayList<>();
+        int foundIndex = -1;
         for (int i = 0; i < actors.size(); i++) {
             if (actors.get(i).getSurname().equals(replacedActorSurname)) {
-                found = true;
-                actors.set(i, newActor);
+                foundActors.add(actors.get(i));
+                foundIndex = i;
             }
         }
-        if (!found) {
+        if (foundActors.isEmpty()) {
             System.out.printf("Актёр с фамилией %s отсутствует в списке!\n", replacedActorSurname);
+        } else if (foundActors.size() > 1) {
+            System.out.printf("Актёр с фамилией %s встречается в списке несколько раз!\n", replacedActorSurname);
+        } else {
+            actors.set(foundIndex, newActor);
         }
     }
 }
